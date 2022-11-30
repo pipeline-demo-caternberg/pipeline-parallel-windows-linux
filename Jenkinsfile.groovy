@@ -17,6 +17,7 @@ pipeline {
                                 echo "build WINDOWS"
                                // run powershell command here
                                powershell 'Get-ChildItem Env: | Sort Name'
+                               powershell 'do { echo hello } while'
                             }
                         }
                         stage("deploy") {
@@ -40,6 +41,7 @@ pipeline {
                                 echo "build LINUX"
                                 sh "hostname"
                                 sh "env | sort"
+                                sh "while :; do echo 'Hit CTRL+C'; sleep 1; done"
                                 //sh 'sleep 100000'
                             }
                         }
