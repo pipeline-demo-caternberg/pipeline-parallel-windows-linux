@@ -13,4 +13,4 @@ spec:
         #securityContext:
       #runAsUser: 1000
   nodeSelector:
-    beta.kubernetes.io/os: linux
+    kubernetes.io/os: linux
