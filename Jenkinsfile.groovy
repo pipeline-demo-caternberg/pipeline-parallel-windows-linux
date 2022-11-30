@@ -7,7 +7,7 @@ pipeline {
                 stage("windows") {
                     agent {
                         kubernetes {
-                            yamlFile 'pods/win.yaml'
+                            yamlFile 'pods/windows.yaml'
                             defaultContainer 'shell'
                         }
                     }
