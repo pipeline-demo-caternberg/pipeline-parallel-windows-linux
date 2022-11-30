@@ -17,7 +17,9 @@ pipeline {
                                 echo "build WINDOWS"
                                // run powershell command here
                                powershell 'Get-ChildItem Env: | Sort Name'
-                               powershell 'do { echo hello } while'
+                               powershell 'Get-Date; Start-Sleep -Seconds 50; Get-Date'
+                               powershell 'Write-Output "Hello WINDOWS"'
+
                             }
                         }
                         stage("deploy") {
