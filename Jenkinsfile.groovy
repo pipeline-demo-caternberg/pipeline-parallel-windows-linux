@@ -39,7 +39,8 @@ pipeline {
                             steps {
                                 echo "build LINUX"
                                 sh "hostname"
-                                sh 'sleep 100000'
+                                sh "env | sort"
+                                //sh 'sleep 100000'
                             }
                         }
                         stage("deploy") {
