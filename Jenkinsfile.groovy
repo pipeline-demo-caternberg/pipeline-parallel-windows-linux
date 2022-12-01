@@ -17,8 +17,14 @@ pipeline {
                                 echo "build WINDOWS"
                                // run powershell command here
                                powershell 'Get-ChildItem Env: | Sort Name'
-                               powershell 'Get-Date; Start-Sleep -Seconds 50; Get-Date'
+                               //powershell 'Get-Date; Start-Sleep -Seconds 10; Get-Date'
                                powershell 'Write-Output "Hello WINDOWS"'
+                               powershell '''for () {
+                                          Get-Date; 
+                                          Start-Sleep -Seconds 10;
+                                          Get-Date
+                                          Write-Host "ECHO FROM WINDOWS"
+                                       }'''
 
                             }
                         }
@@ -43,7 +49,7 @@ pipeline {
                                 echo "build LINUX"
                                 sh "hostname"
                                 sh "env | sort"
-                                sh "while :; do echo 'Hit CTRL+C'; sleep 1; done"
+                                sh "while :; do echo 'ECHO FROM LINUX'; sleep 10; done"
                                 //sh 'sleep 100000'
                             }
                         }
