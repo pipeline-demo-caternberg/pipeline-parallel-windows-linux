@@ -34,7 +34,7 @@ pipeline {
                         sh "env | sort"
                         sh '''
                                     while :; do echo 'ECHO FROM LINUX'; 
-                                    date #"%s";
+                                    date;
                                     sleep 10;done
                                 '''
                     }
