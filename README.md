@@ -86,6 +86,8 @@ linux
           nodeSelector:
             kubernetes.io/os: windows
 ```
+* NOTE: the `Jenkinsfile-Windows-Linux-parallel.groovy` Pipeline will never stop because it has infinity loops for showing purposes implemented. You have to stop them manually.
+ * see `Jenkinsfile-Windows-Linux-parallel.groovy` implementation for details 
 
 # Links 
 
