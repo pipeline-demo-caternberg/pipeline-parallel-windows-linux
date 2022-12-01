@@ -2,8 +2,83 @@
 Parallel pipeline example with windows and linux nodegroups on GKE
 
 
-![pipeline-log.png](pipeline-log.png)
 
+
+# Create a cluster 
+
+* ` --enable-ip-alias`is required for windows
+* Windows requires some resources on the default nodepool. Ensure to have enough capacity on the default nodepool
+
+```
+REGION=us-east1 && MACHINE_TYPE=n1-standard-8 #n1-standard-2 might work as well
+MIN_NODES=1 && MAX_NODES=3
+
+gcloud container clusters create $CLUSTER_NAME \
+    --enable-ip-alias --zone $ZONE \
+    --machine-type $MACHINE_TYPE --enable-autoscaling \
+    --num-nodes 1 --max-nodes $MAX_NODES \
+    --min-nodes $MIN_NODES
+```
+
+# Create Windows nodepools
+
+* In GKE version 1.24 and later, Docker-based node image types are not supported. In GKE version 1.23, you also cannot create new node pools with Docker node image types. You must migrate to a containerd node image type.
+ so conatinerd imagetype is required: `WINDOWS_LTSC_CONTAINERD`
+* `enable-autoscaling` is required 
+* ensure the `machine-type` is sufficient
+  * `n1-standard-16` (might work with `n1-standard-8` as well)
+
+```
+gcloud container node-pools create windows \
+--cluster=$CLUSTER_NAME \
+--image-type=WINDOWS_LTSC_CONTAINERD \
+--no-enable-autoupgrade \
+--enable-autoscaling \
+--num-nodes=1 \
+--min-nodes=1 \
+--max-nodes=2 \
+--machine-type=n1-standard-16
+```
+
+# Create Linux nodepools
+
+* `enable-autoscaling` is required
+* ensure the `machine-type` is sufficient
+    * `n1-standard-16` (might work with `n1-standard-8` or smaller as well, depending on the pod resource limits)
+
+```
+
+gcloud container node-pools create linux \
+--cluster $CLUSTER_NAME \
+--machine-type=n1-standard-16 \
+--enable-autoupgrade \
+--enable-autoscaling \
+--num-nodes=1 \
+--min-nodes=1 \
+--max-nodes=2
+```
+
+# Verfiy the cluster nodepools 
+
+```
+gcloud container node-pools list --cluster  $CLUSTER_NAME --format json |  jq -r  '.[].name'
+default-pool
+windows
+linux
+```
+
+# Install Jenkins OSS  (or better CloudBees CI)  and create the Pipeline job
+
+* Create a Pipeline
+* Set up Pipeline from SCM/GIT (this repo)
+* set `branch` to `*/main`
+* Set `Script Path` to `Jenkinsfile-Windows-Linux-parallel.groovy`
+* ![piplineconfig.png](piplineconfig.png)
+
+* Start the Pipeline, watch the log 
+* ![pipeline-log.png](pipeline-log.png)
+
+# Links 
 
 * https://www.jenkins.io/blog/2017/09/25/declarative-1/
 * https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_running_cloudbees_ci_build_agents_in_windows_containers
