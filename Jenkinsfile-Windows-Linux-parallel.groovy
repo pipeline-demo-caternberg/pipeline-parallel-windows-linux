@@ -1,9 +1,9 @@
 pipeline {
     agent none
     stages {
-        stage("build and deploy on Windows and Linux") {
+        stage("Windows and Linux") {
             parallel {
-                stage("windows") {
+                stage("stage-windows") {
                     agent {
                         kubernetes {
                             yamlFile 'pods/windows.yaml'
@@ -11,10 +11,8 @@ pipeline {
                         }
                     }
                     steps {
-                        echo "build WINDOWS"
-                        // run powershell command here
+                        echo "steps WINDOWS"
                         powershell 'Get-ChildItem Env: | Sort Name'
-                        //powershell 'Get-Date; Start-Sleep -Seconds 10; Get-Date'
                         powershell 'Write-Output "Hello WINDOWS"'
                         powershell '''for (){
                                           Get-Date; 
@@ -23,7 +21,7 @@ pipeline {
                                        }'''
                     }
                 }
-                stage("linux") {
+                stage("stage-linux") {
                     agent {
                         kubernetes {
                             yamlFile 'pods/linux.yaml'
@@ -31,7 +29,7 @@ pipeline {
                         }
                     }
                     steps {
-                        echo "build LINUX"
+                        echo "steps LINUX"
                         sh "hostname"
                         sh "env | sort"
                         sh '''
