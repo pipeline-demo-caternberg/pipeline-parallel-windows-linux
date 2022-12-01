@@ -1,7 +1,5 @@
-# pipeline-parallel-windows-linux
-Parallel pipeline example with windows and linux nodegroups on GKE
-
-
+# Jenkins pipeline-parallel-windows-linux
+Jenkins parallel Pipeline example with windows and linux nodepools on GKE 1.24
 
 
 # Create a cluster 
