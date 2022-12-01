@@ -21,7 +21,7 @@ gcloud container clusters create $CLUSTER_NAME \
 # Create Windows nodepools
 
 * In GKE version 1.24 and later, Docker-based node image types are not supported. In GKE version 1.23, you also cannot create new node pools with Docker node image types. You must migrate to a containerd node image type.
- so conatinerd imagetype is required: `WINDOWS_LTSC_CONTAINERD`
+ So conatinerd `--image-type=WINDOWS_LTSC_CONTAINERD` is required for 1.24
 * `enable-autoscaling` is required 
 * ensure the `machine-type` is sufficient
   * `n1-standard-16` (might work with `n1-standard-8` as well)
