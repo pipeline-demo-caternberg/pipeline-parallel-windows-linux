@@ -13,7 +13,7 @@ podTemplate(yaml: '''
           - Start-Sleep
           - 999999
         nodeSelector:
-          kubernetes.io/os: linux
+          kubernetes.io/os: windows
       ''') {
     node(POD_LABEL) {
         container('shell') {
