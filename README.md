@@ -1,5 +1,10 @@
 # pipeline-parallel-windows-linux
 Parallel pipeline example with windows and linux nodegroups on GKE
+
+
+![pipeline-log.png](pipeline-log.png)
+
+
 * https://www.jenkins.io/blog/2017/09/25/declarative-1/
 * https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_running_cloudbees_ci_build_agents_in_windows_containers
 * https://www.cloudbees.com/blog/cloudbees-ci-support-windows-containers-google-kubernetes-engine-gke
