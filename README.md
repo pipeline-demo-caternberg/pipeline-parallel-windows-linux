@@ -78,6 +78,15 @@ linux
 * Start the Pipeline, watch the log 
 * ![pipeline-log.png](pipeline-log.png)
 
+* ensure the right nodeselector is configured in podtemplates (see pod yaml files in directory `pod`)
+```
+         nodeSelector:
+            kubernetes.io/os: linux
+      or
+          nodeSelector:
+            kubernetes.io/os: windows
+```
+
 # Links 
 
 * https://www.jenkins.io/blog/2017/09/25/declarative-1/
