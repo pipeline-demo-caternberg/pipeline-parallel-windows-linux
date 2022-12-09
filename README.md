@@ -72,7 +72,7 @@ linux
 * set `branch` to `*/main`
 * Set `Script Path` to `Jenkinsfile-Windows-Linux-parallel.groovy`
 * ![piplineconfig.png](piplineconfig.png)
-* Do NOT overwrite the jnlp image globalaly like this. 
+* Do NOT overwrite the jnlp image global like this. 
   * `org.csanchez.jenkins.plugins.kubernetes.pipeline.PodTemplateStepExecution.defaultImage=jenkins/inbound-agent:windowsservercore-ltsc2019`
   * Windows jnlp should be overwritten instead inside the windows podtemplate (see `pods/windows.yaml)
 * Start the Pipeline, watch the log 
