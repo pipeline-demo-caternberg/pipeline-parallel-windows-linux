@@ -14,10 +14,12 @@ pipeline {
                         echo "steps WINDOWS"
                         powershell 'Get-ChildItem Env: | Sort Name'
                         powershell 'Write-Output "Hello WINDOWS"'
+                        powershell 'Get-ChildItem -Force'
                         powershell '''for (){
                                           Get-Date; 
                                           Start-Sleep -Seconds 10;
-                                          Write-Host "ECHO FROM WINDOWS"
+                                          Write-Host "ECHO FROM WINDOWS";
+                                          Get-ChildItem -Force
                                        }'''
                     }
                 }
@@ -33,10 +35,10 @@ pipeline {
                         sh "hostname"
                         sh "pwd"
                         sh "pwd"
-                        sh "ls -lR"
                         sh '''
                                     while :; do echo 'ECHO FROM LINUX'; 
                                     date;
+                                    ls -l;
                                     sleep 10;done
                                 '''
                     }
