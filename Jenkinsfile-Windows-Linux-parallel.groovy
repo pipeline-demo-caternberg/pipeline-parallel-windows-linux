@@ -31,7 +31,9 @@ pipeline {
                     steps {
                         echo "steps LINUX"
                         sh "hostname"
-                        sh "env | sort"
+                        sh "pwd"
+                        sh "pwd"
+                        sh "ls -lR"
                         sh '''
                                     while :; do echo 'ECHO FROM LINUX'; 
                                     date;
