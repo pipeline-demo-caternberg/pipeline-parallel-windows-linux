@@ -1,9 +1,9 @@
 kind: Pod
 metadata:
-  name: maven
+  name: linux
 spec:
   containers:
-    - name: maven
+    - name: linux
       image: maven:3.6.3-jdk-8
       #runAsUser: 1000
       command:

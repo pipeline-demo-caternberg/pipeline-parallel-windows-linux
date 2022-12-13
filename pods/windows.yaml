@@ -4,7 +4,7 @@ spec:
   containers:
     - name: jnlp
       image: jenkins/inbound-agent:jdk11-windowsservercore-1809
-    - name: shell
+    - name: windows
       image: mcr.microsoft.com/powershell:preview-windowsservercore-1809
       command:
         - powershell

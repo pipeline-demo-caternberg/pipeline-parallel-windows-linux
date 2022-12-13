@@ -7,7 +7,7 @@ pipeline {
                     agent {
                         kubernetes {
                             yamlFile 'pods/windows.yaml'
-                            defaultContainer 'shell'
+                            defaultContainer 'windows'
                         }
                     }
                     steps {
@@ -27,7 +27,7 @@ pipeline {
                     agent {
                         kubernetes {
                             yamlFile 'pods/linux.yaml'
-                            defaultContainer 'maven'
+                            defaultContainer 'linux'
                         }
                     }
                     steps {
