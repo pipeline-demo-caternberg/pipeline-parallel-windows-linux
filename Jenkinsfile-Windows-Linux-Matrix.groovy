@@ -132,7 +132,6 @@ pipeline {
                 stages {
                     stage('Configure') {
                       steps {
-                        sh "${myls}"
                         script {
                           if (PLATFORM == 'linux') {
                             sh 'echo "Configure"'
@@ -146,7 +145,7 @@ pipeline {
                     // steps that should happen on all nodes go here
                     stage('Build') {
                       steps {
-                        sh "${myls}"
+
                         script {
                           if (PLATFORM == 'linux') {
                             echo "steps LINUX"
@@ -177,7 +176,7 @@ pipeline {
 
                     stage('Test') {
                       steps {
-                        sh "${myls}"
+
                         script {
                           if (PLATFORM == 'linux') {
                             sh 'echo "Test"'
