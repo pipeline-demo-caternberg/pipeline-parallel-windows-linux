@@ -9,16 +9,16 @@ def myls = 'ls -lR'
 
 pipeline {
     parameters {
-        choice choices: ['all' ,'linux', 'windows'], description: 'Run on specific platform', name: 'PLATFORM_FILTER'
+        choice choices: ['all', 'linux', 'windows'], description: 'Run on specific platform', name: 'PLATFORM_FILTER'
     }
 
     agent none
 
     environment {
-      THEJOB="${env.JOB_NAME.replaceAll("/", "-")}"
-      JFROG_CLI_BUILD_NAME = "$THEJOB"
-      JFROG_CLI_BUILD_NUMBER = "${env.BUILD_NUMBER}"
-      JFROG_CLI_BUILD_URL = "${env.BUILD_URL}"
+        THEJOB = "${env.JOB_NAME.replaceAll("/", "-")}"
+        JFROG_CLI_BUILD_NAME = "$THEJOB"
+        JFROG_CLI_BUILD_NUMBER = "${env.BUILD_NUMBER}"
+        JFROG_CLI_BUILD_URL = "${env.BUILD_URL}"
     }
 
     stages {
@@ -26,20 +26,19 @@ pipeline {
 
         // Example 2 Create agents in every stage block.
         stage('Code-Analyses2') {
-            steps {
 
-                git 'https://github.com/pipeline-demo-caternberg/pipeline-parallel-windows-linux.git'
-                parallel {
-                    stage('ClangFormat') {
-                        agent {
-                            kubernetes {
-                                defaultContainer 'linux'
-                                yamlFile 'pods/linux.yaml'
-                            }
+            // git 'https://github.com/pipeline-demo-caternberg/pipeline-parallel-windows-linux.git'
+            parallel {
+                stage('ClangFormat') {
+                    agent {
+                        kubernetes {
+                            defaultContainer 'linux'
+                            yamlFile 'pods/linux.yaml'
                         }
-                        steps {
-                            sh 'echo default container'
-                            sh "${myls}"
+                    }
+                    steps {
+                        sh 'echo default container'
+                        sh "${myls}"
                     }
                 } // end ClangFormat
                 stage('GoFormat') {
@@ -49,8 +48,8 @@ pipeline {
                             yamlFile 'pods/linux.yaml'
                         }
                     }
-                    steps { 
-                        sh 'echo default container' 
+                    steps {
+                        sh 'echo default container'
                         sh "${myls}"
                     }
                 } // end GoFormat
@@ -61,14 +60,14 @@ pipeline {
                             yamlFile 'pods/linux.yaml'
                         }
                     }
-                    steps { 
-                        sh 'echo default container' 
+                    steps {
+                        sh 'echo default container'
                         sh "${myls}"
                     }
                 } // end ProgetFormat
             } // end parallel
         }
-            }
+
 
         stage('Matrix Build and Test') {
             matrix {
@@ -135,26 +134,26 @@ pipeline {
 
                 stages {
                     stage('Configure') {
-                      steps {
-                        script {
-                          if (PLATFORM == 'linux') {
-                            sh 'echo "Configure"'
-                          } else {
-                            powershell 'echo "Configure"'
-                          }
+                        steps {
+                            script {
+                                if (PLATFORM == 'linux') {
+                                    sh 'echo "Configure"'
+                                } else {
+                                    powershell 'echo "Configure"'
+                                }
+                            }
                         }
-                      }
                     }// end of Configure
 
                     // steps that should happen on all nodes go here
                     stage('Build') {
-                      steps {
+                        steps {
 
-                        script {
-                          if (PLATFORM == 'linux') {
-                            echo "steps LINUX"
-                            sh "hostname"
-                            sh '''
+                            script {
+                                if (PLATFORM == 'linux') {
+                                    echo "steps LINUX"
+                                    sh "hostname"
+                                    sh '''
                                         i=0
                                         while [ $i -ne 100 ]
                                         do
@@ -164,31 +163,31 @@ pipeline {
                                             sleep 10;
                                         done
                                     '''
-                          } else {
-                            echo "steps WINDOWS"
-                            powershell 'Write-Output "Hello WINDOWS"'
-                            powershell '''for (){
+                                } else {
+                                    echo "steps WINDOWS"
+                                    powershell 'Write-Output "Hello WINDOWS"'
+                                    powershell '''for (){
                                             Get-ChildItem -Force
                                             Get-Date;
                                             Start-Sleep -Seconds 10;                                              
                                             Write-Host "ECHO FROM WINDOWS"
                                         }'''
-                          }
+                                }
+                            }
                         }
-                      }
                     }// end of Build
 
                     stage('Test') {
-                      steps {
+                        steps {
 
-                        script {
-                          if (PLATFORM == 'linux') {
-                            sh 'echo "Test"'
-                          } else {
-                            powershell 'echo "Test"'
-                          }
+                            script {
+                                if (PLATFORM == 'linux') {
+                                    sh 'echo "Test"'
+                                } else {
+                                    powershell 'echo "Test"'
+                                }
+                            }
                         }
-                      }
                     } // end of Test
                 } // end of stages
             } // end of matrix
