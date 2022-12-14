@@ -26,17 +26,20 @@ pipeline {
 
         // Example 2 Create agents in every stage block.
         stage('Code-Analyses2') {
-            parallel {
-                stage('ClangFormat') {
-                    agent {
-                        kubernetes {
-                            defaultContainer 'linux'
-                            yamlFile 'pods/linux.yaml'
+            steps {
+
+                git 'https://github.com/pipeline-demo-caternberg/pipeline-parallel-windows-linux.git'
+                parallel {
+                    stage('ClangFormat') {
+                        agent {
+                            kubernetes {
+                                defaultContainer 'linux'
+                                yamlFile 'pods/linux.yaml'
+                            }
                         }
-                    }
-                    steps { 
-                        sh 'echo default container' 
-                        sh "${myls}"
+                        steps {
+                            sh 'echo default container'
+                            sh "${myls}"
                     }
                 } // end ClangFormat
                 stage('GoFormat') {
@@ -65,6 +68,7 @@ pipeline {
                 } // end ProgetFormat
             } // end parallel
         }
+            }
 
         stage('Matrix Build and Test') {
             matrix {
