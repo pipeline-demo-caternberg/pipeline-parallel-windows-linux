@@ -6,6 +6,16 @@ spec:
       image: jenkins/inbound-agent:jdk11-windowsservercore-1809
     - name: windows
       image: mcr.microsoft.com/powershell:preview-windowsservercore-1809
+      imagePullPolicy: IfNotPresent
+      resources:
+        requests:
+        memory: "8Gi"
+        cpu: "4"
+        ephemeral-storage: "8Gi"
+      limits:
+        memory: "8Gi"
+        #cpu: "4"
+        ephemeral-storage: "8Gi"
       command:
         - powershell
       args:
