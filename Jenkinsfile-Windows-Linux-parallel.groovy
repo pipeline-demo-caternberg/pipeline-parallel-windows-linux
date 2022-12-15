@@ -39,7 +39,7 @@ pipeline {
                         //sh "sleep 3m"
                         sh '''
                                         i=0
-                                        while [ $i -ne 5 ]
+                                        while [ $i -ne 3 ]
                                         do
                                             i=$(($i+1))
                                             echo 'ECHO FROM LINUX';
