@@ -36,18 +36,18 @@ pipeline {
                     steps {
                         echo "steps LINUX"
                         sh "hostname"
-                        sh "sleep 5m"
-                       /* sh '''
+                        //sh "sleep 3m"
+                        sh '''
                                         i=0
-                                        while [ $i -ne 50 ]
+                                        while [ $i -ne 5 ]
                                         do
                                             i=$(($i+1))
                                             echo 'ECHO FROM LINUX';
-                                            sleep 10;
+                                            sleep 1m;
                                         done
                                     '''
 
-                        */
+
                     }
                 }
             }
