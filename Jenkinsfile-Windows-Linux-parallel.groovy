@@ -15,11 +15,11 @@ pipeline {
                         powershell 'Get-ChildItem Env: | Sort Name'
                         powershell 'Write-Output "Hello WINDOWS"'
                         powershell 'Get-ChildItem -Force'
-                        powershell '''for ($i = 0; $i -lt 10; $i++){
+                        powershell '''for ($i = 0; $i -lt 5; $i++){
                                             "$i";
                                             ls -Force;
                                             Get-Date;
-                                            Start-Sleep -Seconds 10;
+                                            Start-Sleep -Seconds 5;
                                             Write-Host "ECHO FROM WINDOWS"
                                         }'''
                     }
@@ -38,7 +38,7 @@ pipeline {
                         sh "pwd"
                         sh '''
                                         i=0
-                                        while [ $i -ne 20 ]
+                                        while [ $i -ne 50 ]
                                         do
                                             i=$(($i+1))
                                             echo 'ECHO FROM LINUX';
