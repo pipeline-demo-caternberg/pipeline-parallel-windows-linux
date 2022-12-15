@@ -15,13 +15,15 @@ pipeline {
                         powershell 'Get-ChildItem Env: | Sort Name'
                         powershell 'Write-Output "Hello WINDOWS"'
                         powershell 'Get-ChildItem -Force'
-                        powershell '''for ($i = 0; $i -lt 5; $i++){
+                       /* powershell '''for ($i = 0; $i -lt 5; $i++){
                                             "$i";
                                             ls -Force;
                                             Get-Date;
                                             Start-Sleep -Seconds 5;
                                             Write-Host "ECHO FROM WINDOWS"
                                         }'''
+
+                        */
                     }
                 }
                 stage("stage-linux") {
@@ -34,9 +36,8 @@ pipeline {
                     steps {
                         echo "steps LINUX"
                         sh "hostname"
-                        sh "pwd"
-                        sh "pwd"
-                        sh '''
+                        sh "sleep 5m"
+                       /* sh '''
                                         i=0
                                         while [ $i -ne 50 ]
                                         do
@@ -45,6 +46,8 @@ pipeline {
                                             sleep 10;
                                         done
                                     '''
+
+                        */
                     }
                 }
             }
