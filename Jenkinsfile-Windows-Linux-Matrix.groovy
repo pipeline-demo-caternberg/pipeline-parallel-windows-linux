@@ -155,21 +155,21 @@ pipeline {
                                     sh "hostname"
                                     sh '''
                                         i=0
-                                        while [ $i -ne 100 ]
+                                        while [ $i -ne 20 ]
                                         do
                                             i=$(($i+1))
                                             echo 'ECHO FROM LINUX';
-                                            ls -l:
                                             sleep 10;
                                         done
                                     '''
                                 } else {
                                     echo "steps WINDOWS"
                                     powershell 'Write-Output "Hello WINDOWS"'
-                                    powershell '''for (){
-                                            Get-ChildItem -Force
+                                    powershell '''for ($i = 0; $i -lt 10; $i++){
+                                            "$i";
+                                            ls -Force;
                                             Get-Date;
-                                            Start-Sleep -Seconds 10;                                              
+                                            Start-Sleep -Seconds 10;
                                             Write-Host "ECHO FROM WINDOWS"
                                         }'''
                                 }

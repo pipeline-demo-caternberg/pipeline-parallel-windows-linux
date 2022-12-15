@@ -15,12 +15,13 @@ pipeline {
                         powershell 'Get-ChildItem Env: | Sort Name'
                         powershell 'Write-Output "Hello WINDOWS"'
                         powershell 'Get-ChildItem -Force'
-                        powershell '''for (){
-                                          Get-Date; 
-                                          Start-Sleep -Seconds 10;
-                                          Write-Host "ECHO FROM WINDOWS";
-                                          Get-ChildItem -Force
-                                       }'''
+                        powershell '''for ($i = 0; $i -lt 10; $i++){
+                                            "$i";
+                                            ls -Force;
+                                            Get-Date;
+                                            Start-Sleep -Seconds 10;
+                                            Write-Host "ECHO FROM WINDOWS"
+                                        }'''
                     }
                 }
                 stage("stage-linux") {
@@ -36,11 +37,14 @@ pipeline {
                         sh "pwd"
                         sh "pwd"
                         sh '''
-                                    while :; do echo 'ECHO FROM LINUX'; 
-                                    date;
-                                    ls -l;
-                                    sleep 10;done
-                                '''
+                                        i=0
+                                        while [ $i -ne 20 ]
+                                        do
+                                            i=$(($i+1))
+                                            echo 'ECHO FROM LINUX';
+                                            sleep 10;
+                                        done
+                                    '''
                     }
                 }
             }
