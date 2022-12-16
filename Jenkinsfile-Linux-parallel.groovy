@@ -11,7 +11,7 @@ pipeline {
                         }
                     }
                     steps {
-                        echo "steps LINUX"
+                        echo "steps LINUX1"
                         sh "hostname"
                         sh "sleep 1m"
                     }
@@ -24,7 +24,7 @@ pipeline {
                         }
                     }
                     steps {
-                        echo "steps LINUX"
+                        echo "steps LINUX2"
                         sh "hostname"
                         sh "sleep 1m"
                       }
