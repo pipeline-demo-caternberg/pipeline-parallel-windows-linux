@@ -4,9 +4,11 @@ podTemplate(yaml: '''
       spec:
         containers:
         - name: jnlp
-          image: jenkins/inbound-agent:jdk11-windowsservercore-1809
+          //image: jenkins/inbound-agent:jdk11-windowsservercore-1809
+          image: jenkins/inbound-agent:3077.vd69cf116da_6f-4-jdk11-windowsservercore-ltsc2019
         - name: shell
-          image: mcr.microsoft.com/powershell:preview-windowsservercore-1809
+          #image: mcr.microsoft.com/powershell:preview-windowsservercore-1809
+          image: mcr.microsoft.com/powershell:latest
           command:
           - powershell
           args:
