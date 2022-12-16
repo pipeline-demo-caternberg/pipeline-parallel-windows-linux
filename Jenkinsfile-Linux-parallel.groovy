@@ -1,9 +1,9 @@
 pipeline {
     agent none
     stages {
-        stage("Windows and Linux") {
+        stage("Linux") {
             parallel {
-                stage("stage-linux2") {
+                stage("stage-linux1") {
                     agent {
                         kubernetes {
                             yamlFile 'pods/linux.yaml'
