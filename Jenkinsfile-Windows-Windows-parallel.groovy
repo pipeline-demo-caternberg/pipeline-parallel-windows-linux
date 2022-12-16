@@ -4,6 +4,9 @@ pipeline {
         stage("Windows and Linux") {
             parallel {
                 stage("stage-windows1") {
+                    options {
+                        skipDefaultCheckout(true)
+                    }
                     agent {
                         kubernetes {
                             cloud "myk8s"
@@ -28,6 +31,9 @@ pipeline {
                     }
                 }
                 stage("stage-windows2") {
+                    options {
+                        skipDefaultCheckout(true)
+                    }
                     agent {
                         kubernetes {
                             cloud "myk8s"
