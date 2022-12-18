@@ -15,7 +15,6 @@ pipeline {
                         }
                     }
                     steps {
-                        echo "steps WINDOWS"
                         powershell 'Get-ChildItem Env: | Sort Name'
                         powershell 'Write-Output "Hello JNLP1"'
                         powershell 'Get-ChildItem -Force'
@@ -42,7 +41,6 @@ pipeline {
                         }
                     }
                     steps {
-                        echo "steps WINDOWS"
                         powershell 'Get-ChildItem Env: | Sort Name'
                         powershell 'Write-Output "Hello JNLP2"'
                         powershell 'Get-ChildItem -Force'
