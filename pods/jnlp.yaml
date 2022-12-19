@@ -10,12 +10,12 @@ spec:
       workingDir: "/home/jenkins/agent"
       resources:
         requests:
-          memory: "1Gi"
-          cpu: "1"
-          ephemeral-storage: "1Gi"
+          memory: "8Gi"
+          cpu: "2"
+          ephemeral-storage: "4Gi"
         limits:
-          memory: "1Gi"
-          cpu: "1"
-          ephemeral-storage: "1Gi"
+          memory: "10Gi"
+          cpu: "4"
+          ephemeral-storage: "4Gi"
   nodeSelector:
     kubernetes.io/os: windows
