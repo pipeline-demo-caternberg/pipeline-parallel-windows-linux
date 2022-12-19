@@ -28,14 +28,16 @@ gcloud container clusters create $CLUSTER_NAME \
 
 ```
 gcloud container node-pools create windows \
---cluster=$CLUSTER_NAME \
---image-type=WINDOWS_LTSC_CONTAINERD \
---no-enable-autoupgrade \
---enable-autoscaling \
---num-nodes=1 \
---min-nodes=1 \
---max-nodes=2 \
---machine-type=n1-standard-16
+    --cluster=$CLUSTER_NAME \
+    --enable-autorepair \
+    --local-ssd-count=4 \
+    --image-type=WINDOWS_LTSC_CONTAINERD \
+    --no-enable-autoupgrade \
+    --enable-autoscaling \
+    --num-nodes=2 \
+    --min-nodes=1 \
+    --max-nodes=3 \
+    --machine-type=n2-standard-16
 ```
 
 # Create Linux nodepool
