@@ -6,7 +6,7 @@ spec:
       #image: jenkins/inbound-agent:jdk11-windowsservercore-1809
       image: jenkins/inbound-agent:3077.vd69cf116da_6f-4-jdk11-windowsservercore-ltsc2019
       #image: jenkins/inbound-agent:jdk17-windowsservercore-ltsc2019
-      command: ["sleep", "10000"]
+      #command: ["sleep", "10000"]
       workingDir: "/home/jenkins/agent"
   nodeSelector:
     kubernetes.io/os: windows
