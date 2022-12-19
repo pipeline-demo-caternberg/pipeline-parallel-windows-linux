@@ -153,7 +153,7 @@ pipeline {
                                 if (PLATFORM == 'linux') {
                                     echo "steps LINUX"
                                     sh "hostname"
-                                    sh '''
+                                /*    sh '''
                                         i=0
                                         while [ $i -ne 3 ]
                                         do
@@ -162,6 +162,8 @@ pipeline {
                                             sleep 1m;
                                         done
                                     '''
+
+                                 */
                                 } else {
                                     echo "steps WINDOWS"
                                     powershell 'Write-Output "Hello WINDOWS"'
