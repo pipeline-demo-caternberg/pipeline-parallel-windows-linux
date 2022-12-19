@@ -24,7 +24,7 @@ pipeline {
                                             ls -Force;
                                             Get-Date;
                                             Start-Sleep -Seconds 5;
-                                            Write-Host "ECHO FROM WINDOWS"
+                                            Write-Host "ECHO FROM WINDOWS1"
                                         }'''
 
                         */
@@ -51,7 +51,7 @@ pipeline {
                                              ls -Force;
                                              Get-Date;
                                              Start-Sleep -Seconds 5;
-                                             Write-Host "ECHO FROM WINDOWS"
+                                             Write-Host "ECHO FROM WINDOWS2"
                                          }'''
 
                          */
