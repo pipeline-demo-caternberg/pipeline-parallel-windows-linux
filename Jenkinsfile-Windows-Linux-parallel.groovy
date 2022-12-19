@@ -6,6 +6,7 @@ pipeline {
                 stage("stage-windows") {
                     agent {
                         kubernetes {
+                            cloud "myk8s"
                             yamlFile 'pods/windows.yaml'
                             defaultContainer 'windows'
                         }
@@ -29,6 +30,7 @@ pipeline {
                 stage("stage-linux") {
                     agent {
                         kubernetes {
+                            cloud "myk8s"
                             yamlFile 'pods/linux.yaml'
                             defaultContainer 'linux'
                         }
@@ -37,7 +39,7 @@ pipeline {
                         echo "steps LINUX"
                         sh "hostname"
                         //sh "sleep 3m"
-                        sh '''
+                       /* sh '''
                                         i=0
                                         while [ $i -ne 3 ]
                                         do
@@ -46,7 +48,7 @@ pipeline {
                                             sleep 1m;
                                         done
                                     '''
-
+*/
 
                     }
                 }
