@@ -9,7 +9,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/windows.yaml'
                             defaultContainer 'windows'
                         }
@@ -36,7 +36,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/windows.yaml'
                             defaultContainer 'windows'
                         }

@@ -6,7 +6,7 @@ pipeline {
                 stage("stage-windows") {
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/windows.yaml'
                             defaultContainer 'windows'
                         }
@@ -30,7 +30,7 @@ pipeline {
                 stage("stage-linux") {
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/linux.yaml'
                             defaultContainer 'linux'
                         }

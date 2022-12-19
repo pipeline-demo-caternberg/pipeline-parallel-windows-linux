@@ -9,7 +9,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/jnlp.yaml'
                             defaultContainer 'jnlp'
                         }
@@ -35,7 +35,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/jnlp.yaml'
                             defaultContainer 'jnlp'
                         }
@@ -61,7 +61,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/jnlp.yaml'
                             defaultContainer 'jnlp'
                         }
@@ -87,7 +87,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/jnlp.yaml'
                             defaultContainer 'jnlp'
                         }
@@ -113,7 +113,7 @@ pipeline {
                     }
                     agent {
                         kubernetes {
-                            cloud "myk8s"
+                            //cloud "myk8s"
                             yamlFile 'pods/jnlp.yaml'
                             defaultContainer 'jnlp'
                         }
