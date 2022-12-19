@@ -12,8 +12,10 @@ podTemplate(yaml: '''
       ''') {
     node(POD_LABEL) {
         container('jnlp') {
-            sh 'hello connected'
-            sh 'env | sort'
+
+            powershell 'Get-ChildItem Env: | Sort Name'
+            powershell 'Write-Output "Hello WINDOWS"'
+            powershell 'Get-ChildItem -Force'
         }
     }
 }
