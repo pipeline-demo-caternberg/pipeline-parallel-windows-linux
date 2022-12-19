@@ -3,7 +3,6 @@ import hudson.model.*
 import jenkins.model.Jenkins
 
 def q = Jenkins.instance.queue
-
 q.items.findAll { it.task.name.startsWith('my') }.each { q.cancel(it.task) }
 
 //delete all idle nodes
