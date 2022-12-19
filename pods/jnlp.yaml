@@ -8,5 +8,14 @@ spec:
       #image: jenkins/inbound-agent:jdk17-windowsservercore-ltsc2019
       #command: ["sleep", "10000"]
       workingDir: "/home/jenkins/agent"
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+          ephemeral-storage: "1Gi"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+          ephemeral-storage: "1Gi"
   nodeSelector:
     kubernetes.io/os: windows
