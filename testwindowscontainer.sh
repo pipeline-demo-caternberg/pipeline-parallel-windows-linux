@@ -4,7 +4,7 @@
 for i in {1..5}
 do
 
-cat <<EOF | kubectl delete -f -
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Pod
 metadata:
