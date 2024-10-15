@@ -76,7 +76,7 @@ linux
 * ![piplineconfig.png](piplineconfig.png)
 * Do NOT overwrite the jnlp image global like this. 
   * `org.csanchez.jenkins.plugins.kubernetes.pipeline.PodTemplateStepExecution.defaultImage=jenkins/inbound-agent:windowsservercore-ltsc2019`
-  * Windows jnlp should be overwritten instead inside the windows podtemplate (see `pods/windows.yaml)
+  * Windows jnlp should be overwritten instead inside the windows podtemplate (see [pods/windows.yaml](pods/windows.yaml))
 * Start the Pipeline, watch the log 
 * ![pipeline-log.png](pipeline-log.png)
 
