@@ -4,7 +4,7 @@ metadata:
 spec:
   containers:
     - name: linux
-      image: maven:3.6.3-jdk-8
+      image: 3.9.9-eclipse-temurin-21
       #runAsUser: 1000
       command:
         - cat
