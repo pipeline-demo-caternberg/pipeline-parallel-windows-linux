@@ -38,6 +38,7 @@ gcloud container node-pools create windows \
     --min-nodes=1 \
     --max-nodes=3 \
     --machine-type=n2-standard-16
+    --zone=$ZONE
 ```
 
 # Create Linux nodepool
@@ -56,6 +57,7 @@ gcloud container node-pools create linux \
 --num-nodes=1 \
 --min-nodes=1 \
 --max-nodes=2
+--zone=$ZONE
 ```
 
 # Verfiy the cluster nodepools 
